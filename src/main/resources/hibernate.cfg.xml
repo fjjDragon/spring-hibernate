@@ -14,7 +14,10 @@
 		<property name="connection.password">root</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
 		<property name="show_sql">true</property>
+
+
 		<mapping resource="user.hbm.xml" />
+		<mapping resource="students.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>
