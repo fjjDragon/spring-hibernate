@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+	monitoring="autodetect" dynamicConfig="true">
+	<!-- 指定二级缓存存放在磁盘上的位置,可以使用磁盘目录,也可以使用Java System Property目录, user.home是用户目录、 
+		user.dir是用户当前工作目录、 java.io.tmpdir是默认临时文件路径 -->
+	<diskStore path="java.io.tmpdir/ehcache" />
+
+	<defaultCache maxEntriesLocalHeap="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		diskSpoolBufferSizeMB="30" maxEntriesLocalDisk="10000000"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU"
+		statistics="true">
+		<persistence strategy="localTempSwap" />
+	</defaultCache>
+
+	<cache name="org.hibernate.cache.internal.StandardQueryCache"
+		maxEntriesLocalHeap="5" eternal="false" timeToLiveSeconds="120">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+		maxEntriesLocalHeap="5000" eternal="true">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	<!--可以给每个实体类指定一个配置文件，通过name属性指定，要使用类的全名-->
+	<cache name="com.wxx.entity.User" maxElementsInMemory="100"
+		eternal="false" timeToIdleSeconds="5" timeToLiveSeconds="200" />
+</ehcache>

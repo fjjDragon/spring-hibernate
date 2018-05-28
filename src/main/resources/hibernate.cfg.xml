@@ -14,10 +14,13 @@
 		<property name="connection.password">root</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
 		<property name="show_sql">true</property>
-
-
+		<!-- 起用缓存 -->
+		<!-- <property name="cache.provider_class">org.hibernate.core.EhCacheProvider</property> -->
+		<!-- <property name="hibernate.cache.use_second_level_cache">true</property> -->
+		
 		<mapping resource="user.hbm.xml" />
 		<mapping resource="students.hbm.xml" />
+		<mapping resource="goods.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>
